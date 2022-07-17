@@ -220,8 +220,5 @@ function deleteMiniPoster() {
     }
   }
   makeGrid()
-// function reloadGrid() {
-//   event.target.remove(posterID);
-// }
 }
 showRandom()
