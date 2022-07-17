@@ -203,24 +203,25 @@ function makeGrid() {
   savedGrid.innerHTML = ""
   for (var i = 0; i < savePostersArr.length; i++) {
     savedGrid.innerHTML += `<div class="mini-poster" id="${savePostersArr[i].id}">
-              <img src="${savePostersArr[i].imageURL}" alt="saved poster">
-              <h2>${savePostersArr[i].title}</h2>
-              <h4>${savePostersArr[i].quote}</h4>
+              <img src="${savePostersArr[i].imageURL}" id="${savePostersArr[i].id}" alt="saved poster">
+              <h2 id="${savePostersArr[i].id}">${savePostersArr[i].title}</h2>
+              <h4 id="${savePostersArr[i].id}">${savePostersArr[i].quote}</h4>
             </div>`
   }
-  showingMain()
 }
 
 function deleteMiniPoster() {
   var posterID = event.target.id
   for (var i = 0; i < savePostersArr.length; i++) {
-    if (savePostersArr[i].id == posterID) {
+    if (posterID != savePostersArr[i].id) {
+      continue;
+    } else {
     savePostersArr.splice(i, 1);
-    reloadGrid();
     }
   }
-function reloadGrid() {
-  event.target.remove(posterID);
-}
+  makeGrid()
+// function reloadGrid() {
+//   event.target.remove(posterID);
+// }
 }
 showRandom()
